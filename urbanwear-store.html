@@ -1,0 +1,1785 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f4f2ec">
+<title>URABANWEAR — City uniform, redefined</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap');
+:root
+{
+    --paper:#f4f2ec;
+    --white:#fff;
+    --ink:#171914;
+    --muted:#777970;
+    --line:#deded6;
+    --lime:#d4f35c;
+    --soft:#e9e8e1;
+    --sans:'DM Sans',Arial,sans-serif;
+    --display:'Oswald','Arial Narrow',sans-serif
+}
+*
+{
+    box-sizing:border-box
+}
+html
+{
+    scroll-behavior:smooth
+}
+body
+{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font:14px var(--sans);
+    -webkit-font-smoothing:antialiased
+}
+button,input,select
+{
+    font:inherit
+}
+button
+{
+    cursor:pointer
+}
+a
+{
+    color:inherit;
+    text-decoration:none
+}
+.wrap
+{
+    width:min(1280px,calc(100% - 40px));
+    margin:auto
+}
+.announce
+{
+    height:30px;
+    background:var(--ink);
+    color:#fff;
+    text-align:center;
+    padding:8px;
+    font-size:9px;
+    letter-spacing:.13em;
+    text-transform:uppercase
+}
+.announce b
+{
+    color:var(--lime)
+}
+.header
+{
+    height:75px;
+    position:sticky;
+    top:0;
+    z-index:10;
+    background:rgba(244,242,236,.96);
+    border-bottom:1px solid var(--line);
+    backdrop-filter:blur(10px)
+}
+.head
+{
+    height:100%;
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    align-items:center;
+    gap:20px
+}
+.brand
+{
+    border:0;
+    background:none;
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    font:700 22px var(--display);
+    letter-spacing:.05em;
+    white-space:nowrap
+}
+.mark
+{
+    width:23px;
+    height:23px;
+    background:var(--lime);
+    display:grid;
+    place-items:center;
+    transform:rotate(45deg);
+    font:700 13px var(--display)
+}
+.mark span
+{
+    transform:rotate(-45deg)
+}
+.nav
+{
+    display:flex;
+    gap:25px
+}
+.nav button,.nav a
+{
+    border:0;
+    background:none;
+    padding:10px 0;
+    font-size:10px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    position:relative
+}
+.nav button:after,.nav a:after
+{
+    content:"";
+    height:1px;
+    position:absolute;
+    bottom:4px;
+    left:0;
+    right:100%;
+    background:var(--ink);
+    transition:.2s
+}
+.nav button:hover:after,.nav a:hover:after
+{
+    right:0
+}
+.actions
+{
+    display:flex;
+    justify-content:flex-end;
+    gap:5px
+}
+.icon
+{
+    width:39px;
+    height:39px;
+    border:0;
+    background:transparent;
+    border-radius:50%;
+    position:relative;
+    display:grid;
+    place-items:center;
+    font-size:18px;
+    color:var(--ink)
+}
+.icon:hover
+{
+    background:var(--soft)
+}
+.count
+{
+    position:absolute;
+    right:0;
+    top:0;
+    background:var(--lime);
+    min-width:16px;
+    height:16px;
+    border-radius:50%;
+    font-size:9px;
+    display:grid;
+    place-items:center;
+    font-weight:700
+}
+.hamb
+{
+    display:none
+}
+.searchbar
+{
+    display:none;
+    position:absolute;
+    right:20px;
+    top:65px;
+    background:var(--paper);
+    padding:12px;
+    border:1px solid var(--line);
+    box-shadow:0 15px 35px #17191418
+}
+.searchbar.open
+{
+    display:flex
+}
+.searchbar input
+{
+    border:0;
+    background:transparent;
+    outline:0;
+    width:220px;
+    padding:8px
+}
+.btn
+{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    background:var(--ink);
+    border:1px solid var(--ink);
+    color:#fff;
+    min-height:45px;
+    padding:13px 18px;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    transition:.18s
+}
+.btn:hover
+{
+    background:var(--lime);
+    border-color:var(--lime);
+    color:var(--ink);
+    transform:translateY(-1px)
+}
+.btn.lime
+{
+    background:var(--lime);
+    border-color:var(--lime);
+    color:var(--ink)
+}
+.btn.lime:hover
+{
+    background:var(--ink);
+    color:#fff
+}
+.btn.outline
+{
+    background:transparent;
+    color:var(--ink)
+}
+.btn.small
+{
+    min-height:34px;
+    padding:9px 12px;
+    font-size:9px
+}
+.eyebrow
+{
+    font-size:9px;
+    letter-spacing:.17em;
+    text-transform:uppercase;
+    font-weight:700;
+    color:var(--muted)
+}
+.display
+{
+    font-family:var(--display);
+    text-transform:uppercase;
+    font-weight:500
+}
+.text-btn
+{
+    border:0;
+    background:none;
+    padding:0;
+    text-decoration:underline;
+    text-underline-offset:4px;
+    font-size:11px
+}
+.hero
+{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    min-height:540px;
+    background:#e4e3dc
+}
+.hero-copy
+{
+    padding:60px clamp(28px,7vw,90px);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:flex-start
+}
+.hero h1
+{
+    font:600 clamp(66px,8vw,112px)/.84 var(--display);
+    letter-spacing:-.025em;
+    text-transform:uppercase;
+    margin:20px 0
+}
+.hero h1 span
+{
+    color:#657746
+}
+.hero p
+{
+    max-width:350px;
+    font-size:12px;
+    line-height:1.8;
+    color:#575a51;
+    margin:0 0 24px
+}
+.hero-actions
+{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap
+}
+.hero-photo
+{
+    position:relative;
+    min-height:540px;
+    background:#999
+}
+.hero-photo img
+{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    filter:saturate(.78)
+}
+.hero-tag
+{
+    position:absolute;
+    bottom:20px;
+    left:20px;
+    background:var(--lime);
+    padding:12px 15px;
+    font:500 14px var(--display);
+    text-transform:uppercase
+}
+.ticker
+{
+    background:var(--lime);
+    padding:13px;
+    overflow:hidden;
+    white-space:nowrap;
+    font:500 15px var(--display);
+    letter-spacing:.11em;
+    text-transform:uppercase
+}
+.ticker span
+{
+    padding:0 22px
+}
+.section
+{
+    padding:76px 0
+}
+.section-head
+{
+    display:flex;
+    align-items:end;
+    justify-content:space-between;
+    gap:15px;
+    margin-bottom:25px
+}
+.section-title
+{
+    font:500 clamp(34px,4.6vw,54px)/.95 var(--display);
+    text-transform:uppercase;
+    margin:8px 0 0
+}
+.category-grid
+{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px
+}
+.cat-card
+{
+    height:330px;
+    position:relative;
+    overflow:hidden;
+    border:0;
+    background:#aaa;
+    color:#fff;
+    text-align:left;
+    padding:0
+}
+.cat-card img
+{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    position:absolute;
+    inset:0;
+    filter:brightness(.75);
+    transition:.4s
+}
+.cat-card:hover img
+{
+    transform:scale(1.04)
+}
+.cat-card:after
+{
+    content:"";
+    position:absolute;
+    inset:38% 0 0;
+    background:linear-gradient(transparent,#0009)
+}
+.cat-copy
+{
+    position:absolute;
+    z-index:1;
+    bottom:20px;
+    left:20px;
+    right:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:end
+}
+.cat-copy small
+{
+    font-size:9px;
+    letter-spacing:.1em;
+    text-transform:uppercase
+}
+.cat-copy h3
+{
+    font:500 35px var(--display);
+    text-transform:uppercase;
+    margin:5px 0 0
+}
+.arrow
+{
+    display:grid;
+    place-items:center;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background:var(--lime);
+    color:var(--ink);
+    font-size:18px
+}
+.products
+{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:14px
+}
+.card
+{
+    min-width:0
+}
+.product-img
+{
+    aspect-ratio:3/3.7;
+    background:#e4e3dc;
+    position:relative;
+    overflow:hidden;
+    cursor:pointer
+}
+.product-img>img
+{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    mix-blend-mode:multiply;
+    transition:.4s
+}
+.card:hover .product-img>img
+{
+    transform:scale(1.04)
+}
+.badge
+{
+    position:absolute;
+    top:10px;
+    left:10px;
+    background:var(--lime);
+    padding:6px 8px;
+    font-size:8px;
+    font-weight:700;
+    letter-spacing:.1em;
+    text-transform:uppercase
+}
+.wish
+{
+    position:absolute;
+    right:9px;
+    top:9px;
+    border:0;
+    border-radius:50%;
+    width:33px;
+    height:33px;
+    background:#f4f2ecea;
+    font-size:17px
+}
+.wish.on
+{
+    color:#c44
+}
+.quick
+{
+    position:absolute;
+    bottom:9px;
+    left:9px;
+    right:9px;
+    width:calc(100% - 18px);
+    transform:translateY(50px);
+    transition:.2s;
+    background:#f4f2ecef;
+    color:var(--ink);
+    border-color:transparent
+}
+.card:hover .quick
+{
+    transform:translateY(0)
+}
+.product-meta
+{
+    display:flex;
+    justify-content:space-between;
+    gap:8px;
+    padding-top:11px
+}
+.product-meta h3
+{
+    font-size:11px;
+    margin:0 0 5px
+}
+.product-meta p
+{
+    font-size:9px;
+    color:var(--muted);
+    margin:0
+}
+.price
+{
+    font-size:11px;
+    font-weight:700;
+    white-space:nowrap
+}
+.compare
+{
+    font-size:9px;
+    color:#999;
+    text-decoration:line-through;
+    margin-left:4px
+}
+.story
+{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    background:#1c2018;
+    color:#f8f7f1
+}
+.story img
+{
+    width:100%;
+    height:100%;
+    min-height:400px;
+    object-fit:cover;
+    filter:brightness(.72)
+}
+.story-copy
+{
+    padding:55px clamp(25px,7vw,90px);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:flex-start
+}
+.story-copy .eyebrow
+{
+    color:var(--lime)
+}
+.story-copy h2
+{
+    font:500 clamp(42px,5vw,65px)/.94 var(--display);
+    text-transform:uppercase;
+    margin:15px 0
+}
+.story-copy p
+{
+    font-size:11px;
+    line-height:1.8;
+    color:#c4c5bb;
+    max-width:390px;
+    margin:0 0 22px
+}
+.newsletter
+{
+    background:var(--lime);
+    padding:42px 0
+}
+.newsletter-inner
+{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:25px
+}
+.newsletter h2
+{
+    font:500 31px/.95 var(--display);
+    text-transform:uppercase;
+    margin:0
+}
+.newsletter p
+{
+    font-size:10px
+}
+.newsletter form
+{
+    display:flex;
+    width:min(420px,100%);
+    border-bottom:1px solid var(--ink)
+}
+.newsletter input
+{
+    background:transparent;
+    border:0;
+    outline:0;
+    padding:12px 0;
+    min-width:0;
+    flex:1
+}
+.newsletter button
+{
+    background:transparent;
+    border:0;
+    font-size:9px;
+    font-weight:700;
+    text-transform:uppercase
+}
+.footer
+{
+    background:#191b16;
+    color:#f2f1ec;
+    padding:45px 0 20px
+}
+.footer-grid
+{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:25px;
+    padding-bottom:34px
+}
+.footer p
+{
+    color:#b8b9af;
+    line-height:1.8;
+    font-size:10px;
+    max-width:260px
+}
+.footer h4
+{
+    font-size:9px;
+    text-transform:uppercase;
+    letter-spacing:.13em
+}
+.footer-links
+{
+    display:grid;
+    gap:9px;
+    color:#b8b9af;
+    font-size:10px
+}
+.footer button
+{
+    border:0;
+    background:none;
+    color:inherit;
+    text-align:left;
+    padding:0;
+    font-size:10px
+}
+.foot-bottom
+{
+    border-top:1px solid #383a34;
+    padding-top:14px;
+    display:flex;
+    justify-content:space-between;
+    color:#a7a89e;
+    font-size:8px
+}
+.banner
+{
+    padding:45px 0 34px;
+    border-bottom:1px solid var(--line)
+}
+.crumb
+{
+    font-size:9px;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    color:var(--muted);
+    margin-bottom:14px
+}
+.banner h1
+{
+    font:500 clamp(46px,7vw,80px)/.9 var(--display);
+    text-transform:uppercase;
+    margin:0
+}
+.banner p
+{
+    max-width:510px;
+    color:var(--muted);
+    font-size:11px;
+    line-height:1.7
+}
+.catalog
+{
+    padding:25px 0 70px
+}
+.filters
+{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+    padding-bottom:16px;
+    border-bottom:1px solid var(--line);
+    margin-bottom:18px
+}
+.filter-row
+{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap
+}
+.filters select,.filters input
+{
+    padding:9px;
+    border:1px solid var(--line);
+    background:transparent;
+    font-size:10px;
+    color:var(--ink);
+    outline:0
+}
+.result
+{
+    font-size:9px;
+    color:var(--muted);
+    white-space:nowrap
+}
+.product-page
+{
+    padding:30px 0 70px
+}
+.detail
+{
+    display:grid;
+    grid-template-columns:1.05fr .95fr;
+    gap:clamp(25px,7vw,85px);
+    align-items:start
+}
+.detail-img
+{
+    aspect-ratio:4/4.6;
+    background:#e5e4dc
+}
+.detail-img img
+{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    mix-blend-mode:multiply
+}
+.detail-info
+{
+    position:sticky;
+    top:105px
+}
+.detail-info h1
+{
+    font:500 clamp(40px,5vw,60px)/.95 var(--display);
+    text-transform:uppercase;
+    margin:9px 0
+}
+.detail-info>.price
+{
+    font-size:17px
+}
+.detail-info>p
+{
+    font-size:11px;
+    line-height:1.8;
+    color:var(--muted)
+}
+.stock
+{
+    font-size:10px;
+    color:#496944;
+    margin:16px 0
+}
+.label
+{
+    font-size:9px;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    font-weight:700;
+    margin:20px 0 9px
+}
+.sizes
+{
+    display:flex;
+    gap:7px
+}
+.size
+{
+    width:42px;
+    height:39px;
+    background:transparent;
+    border:1px solid var(--line);
+    font-size:10px
+}
+.size.sel,.size:hover
+{
+    background:var(--ink);
+    border-color:var(--ink);
+    color:#fff
+}
+.buy
+{
+    display:flex;
+    gap:9px;
+    margin-top:24px
+}
+.buy .btn
+{
+    flex:1
+}
+.qty
+{
+    display:flex;
+    border:1px solid var(--line);
+    align-items:center
+}
+.qty button
+{
+    border:0;
+    background:transparent;
+    width:31px;
+    height:42px
+}
+.qty span
+{
+    font-size:10px
+}
+.shipping
+{
+    border-top:1px solid var(--line);
+    margin-top:22px;
+    padding-top:15px;
+    font-size:10px;
+    line-height:1.8;
+    color:var(--muted)
+}
+.cart-layout,.checkout-layout
+{
+    display:grid;
+    grid-template-columns:1fr 340px;
+    gap:40px;
+    align-items:start
+}
+.cart-line
+{
+    display:grid;
+    grid-template-columns:85px 1fr auto;
+    gap:13px;
+    padding:15px 0;
+    border-bottom:1px solid var(--line);
+    align-items:center
+}
+.cart-line img
+{
+    width:85px;
+    height:100px;
+    object-fit:cover;
+    background:#e5e4dd;
+    mix-blend-mode:multiply
+}
+.cart-line h3
+{
+    font-size:11px;
+    margin:0 0 5px
+}
+.cart-line p
+{
+    font-size:9px;
+    color:var(--muted);
+    margin:0 0 9px
+}
+.cart-line .qty button
+{
+    height:29px
+}
+.summary
+{
+    background:#e9e8e1;
+    padding:22px;
+    position:sticky;
+    top:105px
+}
+.summary h2
+{
+    font:500 23px var(--display);
+    text-transform:uppercase;
+    margin:0 0 15px
+}
+.summary-row
+{
+    display:flex;
+    justify-content:space-between;
+    margin:11px 0;
+    font-size:10px
+}
+.summary-row.total
+{
+    border-top:1px solid #cecec6;
+    padding-top:14px;
+    font-size:13px;
+    font-weight:700
+}
+.promo
+{
+    display:flex;
+    margin:16px 0
+}
+.promo input
+{
+    flex:1;
+    min-width:0;
+    padding:9px;
+    border:1px solid #d2d2ca;
+    background:transparent;
+    font-size:10px
+}
+.promo button
+{
+    background:var(--ink);
+    color:#fff;
+    border:1px solid var(--ink);
+    font-size:9px;
+    text-transform:uppercase;
+    padding:0 10px
+}
+.summary>.btn
+{
+    width:100%;
+    margin-top:8px
+}
+.summary small
+{
+    display:block;
+    font-size:9px;
+    color:var(--muted);
+    line-height:1.6;
+    margin-top:13px
+}
+.page
+{
+    padding:38px 0 70px
+}
+.page-title
+{
+    font:500 clamp(38px,5vw,55px)/.95 var(--display);
+    text-transform:uppercase;
+    margin:5px 0 25px
+}
+.empty
+{
+    text-align:center;
+    padding:70px 15px;
+    color:var(--muted)
+}
+.empty h2
+{
+    font:500 34px var(--display);
+    text-transform:uppercase;
+    color:var(--ink);
+    margin:0 0 10px
+}
+.empty p
+{
+    font-size:11px;
+    max-width:360px;
+    margin:0 auto 20px;
+    line-height:1.7
+}
+.field
+{
+    display:grid;
+    gap:6px;
+    margin:12px 0
+}
+.field label
+{
+    font-size:9px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.06em
+}
+.field input,.field select,.field textarea
+{
+    width:100%;
+    padding:11px;
+    border:1px solid var(--line);
+    background:#fff8;
+    font-size:11px;
+    outline:none
+}
+.field input:focus,.field select:focus,.field textarea:focus
+{
+    border-color:var(--ink)
+}
+.form-grid
+{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:4px 12px
+}
+.full
+{
+    grid-column:1/-1
+}
+.checkout-form h2
+{
+    font:500 22px var(--display);
+    text-transform:uppercase;
+    margin:22px 0 10px
+}
+.choice
+{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:12px;
+    border:1px solid var(--line);
+    font-size:10px
+}
+.note
+{
+    background:#e9e8e1;
+    padding:11px;
+    font-size:9px;
+    line-height:1.6;
+    color:var(--muted)
+}
+.account-card
+{
+    background:white;
+    border:1px solid var(--line);
+    padding:25px;
+    max-width:650px;
+    margin:auto
+}
+.auth
+{
+    max-width:390px;
+    margin:auto
+}
+.auth h2
+{
+    font:500 29px var(--display);
+    text-transform:uppercase;
+    margin:0
+}
+.auth p
+{
+    font-size:10px;
+    color:var(--muted);
+    line-height:1.6
+}
+.auth .btn
+{
+    width:100%;
+    margin-top:8px
+}
+.switch
+{
+    text-align:center;
+    font-size:10px
+}
+.switch button
+{
+    border:0;
+    background:none;
+    text-decoration:underline;
+    font-weight:700
+}
+.tabs
+{
+    display:flex;
+    gap:16px;
+    border-bottom:1px solid var(--line);
+    margin:15px 0
+}
+.tabs button
+{
+    padding:10px 0;
+    background:none;
+    border:0;
+    font-size:9px;
+    text-transform:uppercase;
+    color:var(--muted)
+}
+.tabs button.active
+{
+    color:var(--ink);
+    border-bottom:2px solid
+}
+.order-card
+{
+    border:1px solid var(--line);
+    padding:13px;
+    margin:9px 0;
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    font-size:10px
+}
+.pill
+{
+    background:#e6eed8;
+    color:#47613b;
+    border-radius:20px;
+    padding:5px 8px;
+    font-size:8px;
+    text-transform:uppercase
+}
+.admin-login
+{
+    min-height:100vh;
+    display:grid;
+    place-items:center;
+    background:#e9e8e1
+}
+.login-card
+{
+    width:min(410px,calc(100% - 34px));
+    background:white;
+    padding:30px;
+    border:1px solid var(--line);
+    box-shadow:0 20px 55px #17191418
+}
+.login-card h1
+{
+    font:500 36px/.95 var(--display);
+    text-transform:uppercase;
+    margin:18px 0 8px
+}
+.login-card p
+{
+    font-size:10px;
+    color:var(--muted);
+    line-height:1.7
+}
+.login-card .btn
+{
+    width:100%
+}
+.demo
+{
+    background:#f2f1ec;
+    padding:11px;
+    font-size:9px;
+    line-height:1.7;
+    margin-top:15px;
+    color:#555
+}
+.admin
+{
+    min-height:100vh;
+    background:#f2f1ec
+}
+.admin-top
+{
+    height:62px;
+    background:var(--ink);
+    color:#fff;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 20px
+}
+.admin-layout
+{
+    display:grid;
+    grid-template-columns:205px 1fr;
+    min-height:calc(100vh - 62px)
+}
+.sidebar
+{
+    background:#e8e7e0;
+    padding:18px 10px;
+    display:flex;
+    flex-direction:column;
+    gap:4px
+}
+.sidebar button
+{
+    border:0;
+    background:none;
+    text-align:left;
+    padding:11px;
+    font-size:10px;
+    border-radius:4px;
+    color:#4b4d46
+}
+.sidebar button.active,.sidebar button:hover
+{
+    background:var(--ink);
+    color:#fff
+}
+.admin-main
+{
+    padding:30px clamp(16px,4vw,48px);
+    min-width:0
+}
+.admin-head
+{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    margin-bottom:20px
+}
+.admin-head h1
+{
+    font:500 35px var(--display);
+    text-transform:uppercase;
+    margin:0
+}
+.admin-head p
+{
+    font-size:10px;
+    color:var(--muted);
+    margin:4px 0
+}
+.metrics
+{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+    margin-bottom:18px
+}
+.metric,.panel
+{
+    background:#fff;
+    border:1px solid var(--line);
+    padding:16px
+}
+.metric span
+{
+    font-size:8px;
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:.1em
+}
+.metric strong
+{
+    display:block;
+    font:500 28px var(--display);
+    margin:7px 0
+}
+.panel
+{
+    margin-bottom:16px
+}
+.panel h2
+{
+    font:500 20px var(--display);
+    text-transform:uppercase;
+    margin:0 0 14px
+}
+.table-wrap
+{
+    overflow:auto
+}
+table
+{
+    border-collapse:collapse;
+    width:100%;
+    min-width:610px
+}
+th
+{
+    text-align:left;
+    font-size:8px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--muted);
+    padding:10px;
+    border-bottom:1px solid var(--line)
+}
+td
+{
+    font-size:9px;
+    padding:11px 10px;
+    border-bottom:1px solid #ecebe5
+}
+td button
+{
+    border:0;
+    background:none;
+    text-decoration:underline;
+    font-size:9px;
+    padding:4px
+}
+td select
+{
+    font-size:9px;
+    padding:5px;
+    border:1px solid var(--line);
+    background:white
+}
+.admin-product
+{
+    display:flex;
+    gap:9px;
+    align-items:center
+}
+.admin-product img
+{
+    width:34px;
+    height:42px;
+    object-fit:cover
+}
+.admin-form
+{
+    background:#fff;
+    border:1px solid var(--line);
+    padding:20px
+}
+.admin-form .form-grid
+{
+    gap:8px 14px
+}
+.toast
+{
+    position:fixed;
+    z-index:50;
+    bottom:20px;
+    left:50%;
+    transform:translate(-50%,15px);
+    padding:12px 16px;
+    background:var(--ink);
+    color:#fff;
+    font-size:10px;
+    opacity:0;
+    transition:.2s;
+    pointer-events:none
+}
+.toast.show
+{
+    opacity:1;
+    transform:translate(-50%,0)
+}
+.mobile-nav
+{
+    display:none
+}
+.error
+{
+    color:#a33;
+    font-size:9px;
+    margin:8px 0
+}
+@media(max-width:850px)
+{
+    .nav
+    {
+        gap:15px
+    }
+    .products
+    {
+        grid-template-columns:repeat(3,1fr)
+    }
+    .hero
+    {
+        min-height:460px
+    }
+    .hero-photo
+    {
+        min-height:460px
+    }
+    .cart-layout,.checkout-layout
+    {
+        grid-template-columns:1fr 300px;
+        gap:20px
+    }
+    .metrics
+    {
+        grid-template-columns:repeat(2,1fr)
+    }
+}
+@media(max-width:650px)
+{
+    body
+    {
+        padding-bottom:60px
+    }
+    .wrap
+    {
+        width:calc(100% - 30px)
+    }
+    .announce
+    {
+        height:27px;
+        font-size:8px
+    }
+    .header
+    {
+        height:62px
+    }
+    .head
+    {
+        grid-template-columns:1fr auto auto;
+        gap:4px
+    }
+    .brand
+    {
+        font-size:19px
+    }
+    .mark
+    {
+        width:20px;
+        height:20px
+    }
+    .hamb
+    {
+        display:grid
+    }
+    .nav
+    {
+        display:none;
+        position:absolute;
+        left:0;
+        right:0;
+        top:61px;
+        background:var(--paper);
+        padding:8px 17px 15px;
+        box-shadow:0 10px 20px #0001;
+        flex-direction:column;
+        gap:0
+    }
+    .nav.open
+    {
+        display:flex
+    }
+    .nav button
+    {
+        text-align:left
+    }
+    .actions .account-icon
+    {
+        display:none
+    }
+    .icon
+    {
+        width:34px;
+        height:34px
+    }
+    .hero
+    {
+        grid-template-columns:1fr
+    }
+    .hero-copy
+    {
+        padding:42px 24px 30px;
+        min-height:355px
+    }
+    .hero h1
+    {
+        font-size:75px
+    }
+    .hero-photo
+    {
+        min-height:355px
+    }
+    .section
+    {
+        padding:52px 0
+    }
+    .section-title
+    {
+        font-size:36px
+    }
+    .category-grid
+    {
+        grid-template-columns:1fr;
+        gap:10px
+    }
+    .cat-card
+    {
+        height:260px
+    }
+    .products
+    {
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        gap:20px 10px
+    }
+    .quick
+    {
+        transform:none;
+        min-height:32px;
+        padding:7px;
+        font-size:8px
+    }
+    .product-meta h3
+    {
+        font-size:10px
+    }
+    .story
+    {
+        grid-template-columns:1fr
+    }
+    .story img
+    {
+        height:270px;
+        min-height:270px
+    }
+    .story-copy
+    {
+        padding:36px 24px
+    }
+    .newsletter-inner
+    {
+        align-items:flex-start;
+        flex-direction:column
+    }
+    .newsletter form
+    {
+        width:100%
+    }
+    .footer-grid
+    {
+        grid-template-columns:1fr 1fr;
+        gap:18px
+    }
+    .footer-grid>div:first-child
+    {
+        grid-column:1/-1
+    }
+    .foot-bottom
+    {
+        flex-direction:column;
+        gap:7px
+    }
+    .banner
+    {
+        padding:34px 0 25px
+    }
+    .banner h1
+    {
+        font-size:54px
+    }
+    .filters
+    {
+        align-items:flex-start;
+        flex-direction:column
+    }
+    .filter-row
+    {
+        width:100%
+    }
+    .filter-row select,.filter-row input
+    {
+        flex:1;
+        min-width:90px
+    }
+    .result
+    {
+        order:-1
+    }
+    .detail
+    {
+        grid-template-columns:1fr;
+        gap:20px
+    }
+    .detail-info
+    {
+        position:static
+    }
+    .detail-info h1
+    {
+        font-size:43px
+    }
+    .buy
+    {
+        position:sticky;
+        bottom:64px;
+        background:var(--paper);
+        padding:8px 0;
+        z-index:4
+    }
+    .cart-layout,.checkout-layout
+    {
+        grid-template-columns:1fr;
+        gap:20px
+    }
+    .summary
+    {
+        position:static
+    }
+    .cart-line
+    {
+        grid-template-columns:68px 1fr auto;
+        gap:9px
+    }
+    .cart-line img
+    {
+        width:68px;
+        height:84px
+    }
+    .form-grid
+    {
+        grid-template-columns:1fr
+    }
+    .full
+    {
+        grid-column:auto
+    }
+    .account-card
+    {
+        padding:19px
+    }
+    .admin-top
+    {
+        padding:0 12px;
+        height:56px
+    }
+    .admin-layout
+    {
+        grid-template-columns:1fr
+    }
+    .sidebar
+    {
+        flex-direction:row;
+        overflow:auto;
+        padding:7px;
+        position:sticky;
+        top:0;
+        z-index:5
+    }
+    .sidebar button
+    {
+        white-space:nowrap;
+        font-size:8px;
+        padding:9px
+    }
+    .admin-main
+    {
+        padding:22px 12px
+    }
+    .admin-head
+    {
+        align-items:flex-start;
+        flex-direction:column
+    }
+    .admin-head h1
+    {
+        font-size:31px
+    }
+    .metrics
+    {
+        gap:7px
+    }
+    .metric
+    {
+        padding:12px
+    }
+    .metric strong
+    {
+        font-size:24px
+    }
+    .panel,.admin-form
+    {
+        padding:12px
+    }
+    .mobile-nav
+    {
+        position:fixed;
+        z-index:20;
+        bottom:0;
+        left:0;
+        right:0;
+        height:60px;
+        background:#f8f7f2f5;
+        border-top:1px solid var(--line);
+        display:grid;
+        grid-template-columns:repeat(4,1fr);
+        backdrop-filter:blur(8px)
+    }
+    .mobile-nav button
+    {
+        border:0;
+        background:none;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        gap:4px;
+        font-size:8px;
+        color:var(--muted);
+        text-transform:uppercase
+    }
+    .mobile-nav button.active
+    {
+        color:var(--ink)
+    }
+}
+</style>
+</head>
+<body><div id="app"></div><div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script>
+(function(){
+'use strict';
+var KEY='uw_store_demo_v1', ADMIN_USER='admin', ADMIN_PASS='admin';
+function img(id,w){return 'https://images.unsplash.com/'+id+'?auto=format&fit=crop&w='+(w||800)+'&q=85'}
+var seed=[
+{id:'tee-studio',name:'Studio Heavyweight Tee',cat:'T-shirts',price:1499,compare:1799,color:'Bone',hex:'#d7d2c7',sizes:['S','M','L','XL','XXL'],stock:18,badge:'Bestseller',image:img('photo-1521572163474-6864f9cf17ab'),desc:'A structured heavyweight cotton tee with a relaxed shoulder and easy everyday drape.',featured:1},
+{id:'tee-afterhours',name:'Afterhours Box Tee',cat:'T-shirts',price:1699,color:'Washed black',hex:'#302f2d',sizes:['S','M','L','XL'],stock:12,badge:'New drop',image:img('photo-1562157873-818bc0726f68'),desc:'A roomy box cut in soft washed cotton, made for long nights and slow mornings.',featured:1},
+{id:'tee-signal',name:'Signal Graphic Tee',cat:'T-shirts',price:1299,color:'Chalk',hex:'#edece6',sizes:['S','M','L','XL','XXL'],stock:24,image:img('photo-1576566588028-4147f3842f27'),desc:'A minimal graphic tee with a soft hand feel and a comfortable unisex fit.'},
+{id:'hoodie-block',name:'Block Panel Hoodie',cat:'Hoodies',price:3299,compare:3699,color:'Stone',hex:'#b9b6ae',sizes:['S','M','L','XL'],stock:9,badge:'Limited',image:img('photo-1556821840-3a63f95609a7'),desc:'Heavy loopback fleece and tonal paneling give this relaxed hoodie its shape.',featured:1},
+{id:'hoodie-core',name:'Core Zip Hoodie',cat:'Hoodies',price:3599,color:'Olive',hex:'#677052',sizes:['S','M','L','XL','XXL'],stock:15,image:img('photo-1578681994506-b8f463449011'),desc:'A substantial full-zip layer with brushed interior and roomy front pockets.',featured:1},
+{id:'hoodie-archive',name:'Archive Pullover',cat:'Hoodies',price:2999,compare:3399,color:'Ink',hex:'#282a28',sizes:['M','L','XL'],stock:6,badge:'Low stock',image:img('photo-1620799140408-edc6dcb6d633'),desc:'A relaxed pullover hoodie with subtle archive embroidery and a sturdy rib finish.'},
+{id:'shirt-work',name:'Utility Overshirt',cat:'Shirts',price:2799,color:'Moss',hex:'#72765d',sizes:['S','M','L','XL'],stock:11,badge:'New drop',image:img('photo-1598033129183-c4f50c736f10'),desc:'A versatile cotton-twill overshirt with two utility pockets and an easy layer fit.',featured:1},
+{id:'shirt-stripe',name:'Off Grid Stripe Shirt',cat:'Shirts',price:2499,color:'Blue stripe',hex:'#8298a5',sizes:['S','M','L','XL','XXL'],stock:20,image:img('photo-1603252109303-2751441dd157'),desc:'Lightweight woven cotton, relaxed proportions, and a low-key all-over stripe.'},
+{id:'shirt-camp',name:'Weekend Camp Shirt',cat:'Shirts',price:2299,compare:2599,color:'Ecru',hex:'#dfd9c9',sizes:['S','M','L','XL'],stock:8,image:img('photo-1602810318383-e386cc2a3ccf'),desc:'A breezy short-sleeve camp collar in textured cotton for warm city days.'}
+];
+function load(k,f){try{var x=localStorage.getItem(k);return x?JSON.parse(x):f}catch(e){return f}}
+var saved=load(KEY,{}),products=saved.products&&saved.products.length?saved.products:seed.slice(),cart=saved.cart||[],wish=saved.wish||[],orders=saved.orders||[],customers=saved.customers||[],discounts=saved.discounts||[{code:'WELCOME10',type:'percent',value:10,active:true}],settings=saved.settings||{threshold:2499,delivery:99,returns:'Easy returns within 14 days of delivery.'},user=load('uw_customer',null),isAdmin=sessionStorage.getItem('uw_admin')==='true';
+var s={page:route(),cat:'T-shirts',product:null,size:'',qty:1,sort:'featured',filterSize:'',query:'',promo:'',promoError:'',auth:'login',account:'orders',section:'Overview',editing:null,menu:false};
+var app=document.getElementById('app');
+function save(){localStorage.setItem(KEY,JSON.stringify({products:products,cart:cart,wish:wish,orders:orders,customers:customers,discounts:discounts,settings:settings}))}
+function money(n){return'₹'+Number(n||0).toLocaleString('en-IN')}
+function esc(v){return String(v||'').replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function route(){var x=location.hash.slice(1)||'home';if(x==='admin')return sessionStorage.getItem('uw_admin')==='true'?'admin':'admin-login';return ['home','category','product','wishlist','cart','checkout','account','thanks','admin-login'].indexOf(x)>=0?x:'home'}
+function go(p){s.page=p;location.hash=p;render();window.scrollTo(0,0)}
+function toast(x){var t=document.getElementById('toast');t.textContent=x;t.classList.add('show');clearTimeout(window._uwt);window._uwt=setTimeout(function(){t.classList.remove('show')},2200)}
+function find(id){return products.find(function(p){return p.id===id})}
+function count(){return cart.reduce(function(n,c){return n+c.qty},0)}
+function brand(){return'<button class="brand" data-a="go" data-p="home" aria-label="URABANWEAR home"><span class="mark"><span>U</span></span>URABANWEAR</button>'}
+function header(){return'<div class="announce">Complimentary delivery over <b>'+money(settings.threshold)+'</b> · Made for the in-between</div><header class="header"><div class="wrap head">'+brand()+'<nav class="nav '+(s.menu?'open':'')+'"><button data-a="cat" data-c="T-shirts">T-shirts</button><button data-a="cat" data-c="Hoodies">Hoodies</button><button data-a="cat" data-c="Shirts">Shirts</button><button data-a="cat" data-c="Shop all">Shop all</button></nav><div class="actions"><button class="icon hamb" data-a="menu" aria-label="Menu">☰</button><button class="icon" data-a="search" aria-label="Search">⌕</button><button class="icon account-icon" data-a="go" data-p="account" aria-label="Account">♙</button><button class="icon" data-a="go" data-p="wishlist" aria-label="Saved pieces">♡'+(wish.length?'<span class="count">'+wish.length+'</span>':'')+'</button><button class="icon" data-a="go" data-p="cart" aria-label="Bag">▢'+(count()?'<span class="count">'+count()+'</span>':'')+'</button></div><form class="searchbar '+(s.searchOpen?'open':'')+'" data-f="search"><input name="q" value="'+esc(s.query)+'" placeholder="Search the collection"><button class="text-btn">Search</button></form></div></header>'}
+function footer(){return'<section class="newsletter"><div class="wrap newsletter-inner"><div><h2>Good things.<br>First in your inbox.</h2><p>New drops, city notes, and 10% off your first order.</p></div><form data-f="newsletter"><input type="email" name="email" required placeholder="Your email address"><button>Join us ↗</button></form></div></section><footer class="footer"><div class="wrap"><div class="footer-grid"><div>'+brand()+'<p>Everyday uniforms for lives that do not stand still. Designed with intention, made to be worn on repeat.</p></div><div><h4>Explore</h4><div class="footer-links"><button data-a="cat" data-c="T-shirts">T-shirts</button><button data-a="cat" data-c="Hoodies">Hoodies</button><button data-a="cat" data-c="Shirts">Shirts</button></div></div><div><h4>Help</h4><div class="footer-links"><button data-a="go" data-p="account">Your account</button><span>Shipping & returns</span><span>hello@urabanwear.example</span></div></div><div><h4>Follow the city</h4><div class="footer-links"><span>Instagram ↗</span><button data-a="admin-link">Store admin</button></div></div></div><div class="foot-bottom"><span>© 2026 URABANWEAR</span><span>Demo storefront · No real payments are processed</span></div></div></footer><nav class="mobile-nav"><button data-a="go" data-p="home" class="'+(s.page==='home'?'active':'')+'">⌂<span>Home</span></button><button data-a="cat" data-c="Shop all" class="'+(s.page==='category'?'active':'')+'">▦<span>Shop</span></button><button data-a="go" data-p="wishlist">♡<span>Saved</span></button><button data-a="go" data-p="account">♙<span>Account</span></button></nav>'}
+function card(p){return'<article class="card"><div class="product-img" data-a="product" data-id="'+p.id+'"><img loading="lazy" src="'+p.image+'" alt="'+esc(p.name)+'">'+(p.badge?'<span class="badge">'+esc(p.badge)+'</span>':'')+'<button class="wish '+(wish.indexOf(p.id)>=0?'on':'')+'" data-a="wish" data-id="'+p.id+'" aria-label="Save '+esc(p.name)+'">'+(wish.indexOf(p.id)>=0?'♥':'♡')+'</button><button class="btn quick" data-a="product" data-id="'+p.id+'">Choose options ↗</button></div><div class="product-meta"><div><h3>'+esc(p.name)+'</h3><p>'+esc(p.color)+' · '+esc(p.cat)+'</p></div><div class="price">'+money(p.price)+(p.compare?'<span class="compare">'+money(p.compare)+'</span>':'')+'</div></div></article>'}
+function home(){return'<main><section class="hero"><div class="hero-copy"><div class="eyebrow">Drop 04 · Built for real days</div><h1>Wear the<br><span>unwritten.</span></h1><p>Thoughtful layers for crowded trains, late dinners, and wherever the day takes you.</p><div class="hero-actions"><button class="btn" data-a="cat" data-c="Shop all">Shop the drop ↗</button><button class="btn outline" data-a="cat" data-c="Hoodies">Find your layer</button></div></div><div class="hero-photo"><img src="'+img('photo-1529139574466-a303027c1d8b',1100)+'" alt="Streetwear styled for the city"><span class="hero-tag">New season / 04</span></div></section><div class="ticker">Made to move ✳ Wear on repeat ✳ Find your uniform ✳ Made to move ✳</div><section class="section"><div class="wrap"><div class="section-head"><div><div class="eyebrow">Find your fit</div><h2 class="section-title">Three ways to wear it</h2></div><button class="text-btn" data-a="cat" data-c="Shop all">Shop all pieces ↗</button></div><div class="category-grid"><button class="cat-card" data-a="cat" data-c="T-shirts"><img src="'+img('photo-1521572163474-6864f9cf17ab')+'" alt="T-shirt collection"><span class="cat-copy"><span><small>01 · Everyday staples</small><h3>T-shirts</h3></span><i class="arrow">↗</i></span></button><button class="cat-card" data-a="cat" data-c="Hoodies"><img src="'+img('photo-1556821840-3a63f95609a7')+'" alt="Hoodie collection"><span class="cat-copy"><span><small>02 · Easy layers</small><h3>Hoodies</h3></span><i class="arrow">↗</i></span></button><button class="cat-card" data-a="cat" data-c="Shirts"><img src="'+img('photo-1603252109303-2751441dd157')+'" alt="Shirt collection"><span class="cat-copy"><span><small>03 · Refined utility</small><h3>Shirts</h3></span><i class="arrow">↗</i></span></button></div></div></section><section class="section" style="padding-top:0"><div class="wrap"><div class="section-head"><div><div class="eyebrow">The pieces on repeat</div><h2 class="section-title">Picked for the city</h2></div><button class="text-btn" data-a="cat" data-c="Shop all">View collection ↗</button></div><div class="products">'+products.filter(function(p){return p.featured}).slice(0,4).map(card).join('')+'</div></div></section><section class="story"><img src="'+img('photo-1483985988355-763728e1935b',900)+'" alt="Streetwear in the city"><div class="story-copy"><div class="eyebrow">The URABANWEAR point of view</div><h2>Less noise.<br>More wear.</h2><p>We make the pieces that earn their place in your rotation. Comfortable fits, considered details, and fabrics that feel better with every wear.</p><button class="btn lime" data-a="cat" data-c="Shirts">Meet the collection ↗</button></div></section></main>'}
+function category(){var list=s.page==='wishlist'?products.filter(function(p){return wish.indexOf(p.id)>=0}):products.filter(function(p){return s.cat==='Shop all'||p.cat===s.cat});if(s.query)list=list.filter(function(p){return(p.name+' '+p.cat+' '+p.color).toLowerCase().indexOf(s.query.toLowerCase())>=0});if(s.filterSize)list=list.filter(function(p){return p.sizes.indexOf(s.filterSize)>=0});if(s.sort==='low')list.sort(function(a,b){return a.price-b.price});if(s.sort==='high')list.sort(function(a,b){return b.price-a.price});if(s.sort==='new')list.sort(function(a,b){return Number((b.badge||'').includes('New'))-Number((a.badge||'').includes('New'))});var title=s.page==='wishlist'?'Saved pieces':s.cat;return'<main><section class="banner"><div class="wrap"><div class="crumb">Home / '+esc(title)+'</div><div class="eyebrow">Made for the in-between</div><h1>'+esc(title)+'</h1><p>Explore everyday pieces designed to move with you. Find a fit, choose your color, and make it part of your rotation.</p></div></section><section class="catalog"><div class="wrap"><div class="filters"><div class="filter-row"><input data-filter="query" value="'+esc(s.query)+'" placeholder="Search styles" aria-label="Search styles"><select data-filter="size" aria-label="Filter by size"><option value="">All sizes</option>'+['S','M','L','XL','XXL'].map(function(x){return'<option '+(s.filterSize===x?'selected':'')+'>'+x+'</option>'}).join('')+'</select><select data-filter="sort" aria-label="Sort products"><option value="featured">Featured</option><option value="new" '+(s.sort==='new'?'selected':'')+'>Newest</option><option value="low" '+(s.sort==='low'?'selected':'')+'>Price: low to high</option><option value="high" '+(s.sort==='high'?'selected':'')+'>Price: high to low</option></select></div><span class="result">'+list.length+' pieces</span></div>'+(list.length?'<div class="products">'+list.map(card).join('')+'</div>':'<div class="empty"><h2>Nothing here yet</h2><p>Try changing your filters or explore another part of the collection.</p><button class="btn small" data-a="clear">Clear filters</button></div>')+'</div></section></main>'}
+function detail(){var p=find(s.product);if(!p)return category();if(!s.size)s.size=p.sizes[1]||p.sizes[0];return'<main class="product-page"><div class="wrap"><div class="crumb">Home / '+esc(p.cat)+' / '+esc(p.name)+'</div><div class="detail"><div class="detail-img"><img src="'+p.image+'" alt="'+esc(p.name)+'"></div><section class="detail-info"><div class="eyebrow">'+esc(p.cat)+' · '+esc(p.badge||'Everyday uniform')+'</div><h1>'+esc(p.name)+'</h1><div class="price">'+money(p.price)+(p.compare?'<span class="compare">'+money(p.compare)+'</span>':'')+'</div><div class="stock">'+(p.stock?'● In stock · Ships in 1–2 business days':'Currently out of stock')+'</div><p>'+esc(p.desc)+'</p><div class="label">Color · '+esc(p.color)+'</div><div class="label">Select size <button class="text-btn" data-a="size-guide">Size guide</button></div><div class="sizes">'+p.sizes.map(function(x){return'<button class="size '+(x===s.size?'sel':'')+'" data-a="size" data-size="'+x+'">'+x+'</button>'}).join('')+'</div><div class="buy"><div class="qty"><button data-a="qty" data-d="-1">−</button><span>'+s.qty+'</span><button data-a="qty" data-d="1">+</button></div><button class="btn lime" data-a="add" data-id="'+p.id+'">Add to bag · '+money(p.price*s.qty)+'</button><button class="icon" data-a="wish" data-id="'+p.id+'" aria-label="Save to wishlist">'+(wish.indexOf(p.id)>=0?'♥':'♡')+'</button></div><div class="shipping">✳ Free delivery over '+money(settings.threshold)+'<br>✳ '+esc(settings.returns)+'<br>✳ Cash on delivery available</div></section></div></div></main>'}
+function cartRows(){return cart.map(function(x){return{c:x,p:find(x.id)}}).filter(function(x){return x.p})}
+function totals(){var subtotal=cartRows().reduce(function(n,x){return n+x.p.price*x.c.qty},0),d=discounts.find(function(x){return x.active&&x.code===s.promo.toUpperCase()}),off=d?(d.type==='percent'?Math.round(subtotal*d.value/100):Math.min(subtotal,d.value)):0,delivery=subtotal===0||subtotal>=settings.threshold?0:settings.delivery;return{subtotal:subtotal,off:off,delivery:delivery,total:subtotal-off+delivery}}
+function cartPage(){var rows=cartRows();if(!rows.length)return'<main class="page"><div class="wrap empty"><div class="eyebrow">Your bag</div><h2>Nothing in the bag.</h2><p>Good things are waiting. Explore the collection and find your next everyday piece.</p><button class="btn" data-a="cat" data-c="Shop all">Shop the collection ↗</button></div></main>';var t=totals();return'<main class="page"><div class="wrap"><div class="crumb">Home / Your bag</div><h1 class="page-title">Your bag ('+count()+')</h1><div class="cart-layout"><div>'+rows.map(function(x){return'<div class="cart-line"><img src="'+x.p.image+'" alt=""><div><h3>'+esc(x.p.name)+'</h3><p>'+esc(x.p.color)+' · Size '+esc(x.c.size)+'</p><div class="qty"><button data-a="cartqty" data-id="'+x.p.id+'" data-d="-1">−</button><span>'+x.c.qty+'</span><button data-a="cartqty" data-id="'+x.p.id+'" data-d="1">+</button></div></div><div>'+money(x.p.price*x.c.qty)+'<br><button class="text-btn" style="font-size:9px;margin-top:10px" data-a="remove" data-id="'+x.p.id+'">Remove</button></div></div>'}).join('')+'</div><aside class="summary"><h2>Order summary</h2><div class="summary-row"><span>Subtotal</span><span>'+money(t.subtotal)+'</span></div><div class="summary-row"><span>Delivery</span><span>'+(t.delivery?money(t.delivery):'Free')+'</span></div>'+(t.off?'<div class="summary-row"><span>Discount · '+esc(s.promo)+'</span><span>−'+money(t.off)+'</span></div>':'')+'<form class="promo" data-f="promo"><input name="code" value="'+esc(s.promo)+'" placeholder="Promo code"><button>Apply</button></form>'+(s.promoError?'<div class="error">'+esc(s.promoError)+'</div>':'')+'<div class="summary-row total"><span>Total</span><span>'+money(t.total)+'</span></div><button class="btn lime" data-a="go" data-p="checkout">Continue to checkout ↗</button><small>'+(t.subtotal<settings.threshold?'Add '+money(settings.threshold-t.subtotal)+' more for complimentary delivery.':'Complimentary delivery unlocked.')+' Taxes included. Demo payment only.</small></aside></div></div></main>'}
+function checkout(){var t=totals();return'<main class="page"><div class="wrap"><div class="crumb">Home / Bag / Checkout</div><h1 class="page-title">Checkout</h1><div class="checkout-layout"><form class="checkout-form" data-f="checkout"><h2>Contact</h2><div class="form-grid"><div class="field full"><label>Email address</label><input type="email" name="email" required value="'+esc(user?user.email:'')+'"></div><div class="field"><label>First name</label><input name="first" required value="'+esc(user?user.name.split(' ')[0]:'')+'"></div><div class="field"><label>Last name</label><input name="last" required></div><div class="field full"><label>Phone</label><input name="phone" type="tel" required placeholder="+91"></div></div><h2>Delivery address</h2><div class="form-grid"><div class="field full"><label>Address</label><input name="address" required></div><div class="field"><label>City</label><input name="city" required></div><div class="field"><label>State</label><input name="state" required></div><div class="field"><label>PIN code</label><input name="pin" required></div><div class="field"><label>Country</label><select name="country"><option>India</option><option>Other</option></select></div></div><h2>Payment</h2><label class="choice"><input type="radio" name="payment" checked> Cash on delivery · No card needed</label><p class="note">This is a demo checkout. The order stays in this browser. No real payment is collected or processed.</p><button class="btn lime" style="margin-top:17px">Place demo order · '+money(t.total)+'</button></form><aside class="summary"><h2>Your order</h2>'+cartRows().map(function(x){return'<div class="summary-row"><span>'+esc(x.p.name)+' × '+x.c.qty+' <small>('+esc(x.c.size)+')</small></span><span>'+money(x.p.price*x.c.qty)+'</span></div>'}).join('')+'<div class="summary-row"><span>Delivery</span><span>'+(t.delivery?money(t.delivery):'Free')+'</span></div><div class="summary-row total"><span>Total</span><span>'+money(t.total)+'</span></div></aside></div></div></main>'}
+function account(){if(!user)return'<main class="page"><div class="wrap"><div class="eyebrow">A little more personal</div><h1 class="page-title">Your account</h1><div class="account-card"><form class="auth" data-f="'+(s.auth==='login'?'login':'signup')+'"><h2>'+(s.auth==='login'?'Welcome back':'Create account')+'</h2><p>'+(s.auth==='login'?'Sign in to see your orders and saved pieces.':'Save your details and keep track of every order.')+'</p>'+(s.auth==='signup'?'<div class="field"><label>Name</label><input name="name" required></div>':'')+'<div class="field"><label>Email</label><input type="email" name="email" required></div><div class="field"><label>Password</label><input type="password" name="password" required minlength="6"></div><div class="msg"></div><button class="btn lime">'+(s.auth==='login'?'Sign in':'Create account')+' ↗</button><p class="switch">'+(s.auth==='login'?'New to URABANWEAR?':'Already have an account?')+' <button type="button" data-a="auth">Switch</button></p></form></div></div></main>';var own=orders.filter(function(o){return o.email===user.email});return'<main class="page"><div class="wrap"><div class="eyebrow">Good to see you</div><h1 class="page-title">Hey, '+esc(user.name.split(' ')[0])+' <button class="text-btn" data-a="logout">Sign out</button></h1><div class="tabs"><button class="'+(s.account==='orders'?'active':'')+'" data-a="accounttab" data-tab="orders">Your orders</button><button class="'+(s.account==='details'?'active':'')+'" data-a="accounttab" data-tab="details">Account details</button><button data-a="go" data-p="wishlist">Saved pieces ('+wish.length+')</button></div><div class="account-card">'+(s.account==='orders'?'<h2 class="display">Order history</h2>'+(own.length?own.map(function(o){return'<div class="order-card"><span><b>Order '+esc(o.id)+'</b><br>'+new Date(o.date).toLocaleDateString()+' · '+o.items.length+' items · '+money(o.total)+'</span><span class="pill">'+esc(o.status)+'</span></div>'}).join(''):'<div class="empty"><h2>No orders yet</h2><p>Your first great find is waiting.</p><button class="btn small" data-a="cat" data-c="Shop all">Shop now</button></div>'):'<h2 class="display">Account details</h2><p>'+esc(user.name)+'<br>'+esc(user.email)+'</p><small>Account is stored in this browser preview.</small>')+'</div></div></main>'}
+function thanks(){var o=orders[orders.length-1];return'<main class="page"><div class="wrap empty"><div class="arrow" style="margin:auto">✓</div><div class="eyebrow" style="margin-top:18px">Order received</div><h2 style="font-size:54px">That’s a wrap.</h2><p>Your demo order '+(o?esc(o.id):'')+' is saved in this browser. No real payment was collected.</p><button class="btn lime" data-a="cat" data-c="Shop all">Keep exploring ↗</button><p><button class="text-btn" data-a="go" data-p="account">View your account</button></p></div></main>'}
+function adminLogin(){return'<main class="admin-login"><form class="login-card" data-f="adminlogin">'+brand()+'<div class="eyebrow" style="margin-top:25px">URABANWEAR · Admin</div><h1>Store control,<br>in one place.</h1><p>Manage products, orders, customers, promotions, and store settings.</p><div class="field"><label>Username</label><input name="username" required autocomplete="username"></div><div class="field"><label>Password</label><input type="password" name="password" required autocomplete="current-password"></div><div class="msg"></div><button class="btn lime">Enter dashboard ↗</button><div class="demo"><b>Demo access</b><br>Username: <b>admin</b> · Password: <b>admin</b><br>This local preview is not production authentication.</div><p><button type="button" class="text-btn" data-a="go" data-p="home">← Back to storefront</button></p></form></main>'}
+function head(title,sub,btn){return'<div class="admin-head"><div><h1>'+title+'</h1><p>'+sub+'</p></div>'+(btn||'')+'</div>'}
+function orderTable(list){return'<div class="table-wrap"><table><thead><tr><th>Order</th><th>Customer</th><th>Date</th><th>Total</th><th>Status</th></tr></thead><tbody>'+(list.length?list.map(function(o){return'<tr><td><b>'+esc(o.id)+'</b></td><td>'+esc(o.name)+'<br>'+esc(o.email)+'</td><td>'+new Date(o.date).toLocaleDateString()+'</td><td>'+money(o.total)+'</td><td><select data-status="'+esc(o.id)+'">'+['Processing','Packed','Shipped','Delivered','Cancelled'].map(function(x){return'<option '+(o.status===x?'selected':'')+'>'+x+'</option>'}).join('')+'</select></td></tr>'}).join(''):'<tr><td colspan="5">Orders placed from the store will appear here.</td></tr>')+'</tbody></table></div>'}
+function adminPage(){if(!isAdmin)return adminLogin();var nav=['Overview','Products','Orders','Customers','Discounts','Settings'];var body='';
+if(s.section==='Overview'){var rev=orders.reduce(function(n,o){return n+o.total},0);body='<div class="metrics"><div class="metric"><span>Gross sales</span><strong>'+money(rev)+'</strong><span>'+orders.length+' demo orders</span></div><div class="metric"><span>Orders</span><strong>'+orders.length+'</strong><span>All time</span></div><div class="metric"><span>Products</span><strong>'+products.length+'</strong><span>Across three collections</span></div><div class="metric"><span>Low stock</span><strong>'+products.filter(function(p){return p.stock<=8}).length+'</strong><span>8 or fewer units</span></div></div><section class="panel"><h2>Recent orders</h2>'+orderTable(orders.slice().reverse().slice(0,5))+'</section><section class="panel"><h2>Stock to watch</h2>'+products.filter(function(p){return p.stock<=8}).map(function(p){return'<div class="order-card"><b>'+esc(p.name)+'</b><span class="pill">'+p.stock+' left</span></div>'}).join('')+'</section>'}
+else if(s.section==='Products'){if(s.editing){var p=s.editing;body='<form class="admin-form" data-f="saveproduct"><input type="hidden" name="id" value="'+esc(p.id||'')+'"><div class="form-grid"><div class="field"><label>Product name</label><input name="name" required value="'+esc(p.name||'')+'"></div><div class="field"><label>Category</label><select name="cat">'+['T-shirts','Hoodies','Shirts'].map(function(c){return'<option '+(p.cat===c?'selected':'')+'>'+c+'</option>'}).join('')+'</select></div><div class="field"><label>Price ₹</label><input name="price" type="number" required value="'+esc(p.price||'')+'"></div><div class="field"><label>Compare at ₹</label><input name="compare" type="number" value="'+esc(p.compare||'')+'"></div><div class="field"><label>Stock</label><input name="stock" type="number" required value="'+esc(p.stock||0)+'"></div><div class="field"><label>Color</label><input name="color" value="'+esc(p.color||'')+'"></div><div class="field full"><label>Image URL</label><input name="image" type="url" required value="'+esc(p.image||'')+'"></div><div class="field full"><label>Description</label><input name="desc" value="'+esc(p.desc||'')+'"></div><div class="field"><label>Sizes, comma separated</label><input name="sizes" value="'+esc((p.sizes||['S','M','L','XL']).join(', '))+'"></div><div class="field"><label>Badge</label><input name="badge" value="'+esc(p.badge||'')+'"></div></div><button class="btn lime">Save product</button> <button type="button" class="btn outline" data-a="cancel-edit">Cancel</button></form>'}else body='<section class="panel"><h2>Catalog · '+products.length+' products <button class="btn small lime" data-a="newproduct" style="float:right">＋ Add product</button></h2><div class="table-wrap"><table><thead><tr><th>Product</th><th>Category</th><th>Price</th><th>Stock</th><th>Actions</th></tr></thead><tbody>'+products.map(function(p){return'<tr><td><span class="admin-product"><img src="'+p.image+'" alt=""><b>'+esc(p.name)+'</b></span></td><td>'+esc(p.cat)+'</td><td>'+money(p.price)+'</td><td>'+p.stock+'</td><td><button data-a="editproduct" data-id="'+p.id+'">Edit</button><button data-a="deleteproduct" data-id="'+p.id+'">Delete</button></td></tr>'}).join('')+'</tbody></table></div></section>'}
+else if(s.section==='Orders')body='<section class="panel"><h2>All orders · '+orders.length+'</h2>'+orderTable(orders.slice().reverse())+'</section>';
+else if(s.section==='Customers'){var list={};customers.forEach(function(c){list[c.email]=c});orders.forEach(function(o){if(!list[o.email])list[o.email]={name:o.name,email:o.email,created:o.date}});body='<section class="panel"><h2>Customers · '+Object.keys(list).length+'</h2><div class="table-wrap"><table><thead><tr><th>Name</th><th>Email</th><th>Since</th><th>Orders</th><th>Total spent</th></tr></thead><tbody>'+Object.keys(list).map(function(k){var c=list[k],own=orders.filter(function(o){return o.email===k});return'<tr><td>'+esc(c.name)+'</td><td>'+esc(k)+'</td><td>'+new Date(c.created||Date.now()).toLocaleDateString()+'</td><td>'+own.length+'</td><td>'+money(own.reduce(function(n,o){return n+o.total},0))+'</td></tr>'}).join('')+'</tbody></table></div></section>'}
+else if(s.section==='Discounts'){body='<section class="panel"><h2>Promo codes <button class="btn small lime" data-a="newdiscount" style="float:right">＋ Add code</button></h2><div class="table-wrap"><table><thead><tr><th>Code</th><th>Type</th><th>Value</th><th>Status</th><th></th></tr></thead><tbody>'+discounts.map(function(d,i){return'<tr><td><b>'+esc(d.code)+'</b></td><td>'+d.type+'</td><td>'+(d.type==='percent'?d.value+'%':money(d.value))+'</td><td>'+(d.active?'Active':'Paused')+'</td><td><button data-a="togglecode" data-i="'+i+'">'+(d.active?'Pause':'Activate')+'</button><button data-a="deletecode" data-i="'+i+'">Delete</button></td></tr>'}).join('')+'</tbody></table></div><p style="font-size:9px;color:var(--muted)">Demo code WELCOME10 gives 10% off.</p></section>'}
+else if(s.section==='Settings')body='<form class="admin-form" data-f="settings"><h2>Delivery & policies</h2><div class="form-grid"><div class="field"><label>Free shipping threshold ₹</label><input name="threshold" type="number" value="'+settings.threshold+'"></div><div class="field"><label>Standard delivery fee ₹</label><input name="delivery" type="number" value="'+settings.delivery+'"></div><div class="field full"><label>Returns policy</label><input name="returns" value="'+esc(settings.returns)+'"></div></div><button class="btn lime">Save settings</button><p class="note" style="margin-top:18px">This preview stores products, accounts, and orders in the current browser only. The demo admin credentials are not safe for production. Connect secure authentication, a backend, and payment processing before taking real orders.</p></form>';
+return'<div class="admin"><header class="admin-top"><div>'+brand()+' <small>STORE ADMIN</small></div><div>Signed in as admin <button class="btn small outline" data-a="adminlogout">Sign out</button></div></header><div class="admin-layout"><aside class="sidebar">'+nav.map(function(n){return'<button class="'+(s.section===n?'active':'')+'" data-a="section" data-s="'+n+'">'+n+'</button>'}).join('')+'<button data-a="go" data-p="home" style="margin-top:auto">↗ View storefront</button></aside><main class="admin-main">'+head(s.section,s.section==='Overview'?'A clear view of the store, all in one place.':'Manage '+s.section.toLowerCase()+' for your store.')+body+'</main></div></div>'}
+function render(){if(s.page==='admin'&&!isAdmin)s.page='admin-login';var main=s.page==='admin'||s.page==='admin-login'?adminPage():header()+(s.page==='home'?home():s.page==='category'||s.page==='wishlist'?category():s.page==='product'?detail():s.page==='cart'?cartPage():s.page==='checkout'?checkout():s.page==='account'?account():thanks())+footer();app.innerHTML=main}
+function add(id){var p=find(id);if(!p||!p.stock){toast('This piece is out of stock');return}var size=s.size||p.sizes[0],c=cart.find(function(x){return x.id===id&&x.size===size});if(c)c.qty=Math.min(c.qty+s.qty,p.stock);else cart.push({id:id,size:size,qty:Math.min(s.qty,p.stock)});save();toast('Added to your bag');render()}
+function hashpass(x){return crypto.subtle.digest('SHA-256',new TextEncoder().encode(x)).then(function(b){return Array.from(new Uint8Array(b)).map(function(q){return q.toString(16).padStart(2,'0')}).join('')})}
+function place(form){var d=new FormData(form),keys=['email','first','last','phone','address','city','state','pin'];for(var i=0;i<keys.length;i++)if(!String(d.get(keys[i])||'').trim()){toast('Please complete each required field');return}var t=totals(),items=cartRows().map(function(x){return{id:x.p.id,name:x.p.name,size:x.c.size,qty:x.c.qty,price:x.p.price}}),o={id:'UW-'+String(Date.now()).slice(-6),name:d.get('first')+' '+d.get('last'),email:d.get('email'),phone:d.get('phone'),address:d.get('address')+', '+d.get('city')+', '+d.get('state')+' '+d.get('pin'),items:items,total:t.total,status:'Processing',date:new Date().toISOString()};orders.push(o);customers.push({name:o.name,email:o.email,created:o.date});items.forEach(function(x){var p=find(x.id);if(p)p.stock=Math.max(0,p.stock-x.qty)});cart=[];save();go('thanks')}
+app.addEventListener('click',function(e){var b=e.target.closest('[data-a]');if(!b)return;var a=b.dataset.a;if(a==='go'){go(b.dataset.p);return}if(a==='cat'){s.cat=b.dataset.c;s.page='category';s.query='';s.filterSize='';s.sort='featured';s.menu=false;location.hash='category';render();window.scrollTo(0,0);return}if(a==='menu'){s.menu=!s.menu;render();return}if(a==='search'){s.searchOpen=!s.searchOpen;render();var x=app.querySelector('.searchbar input');if(x)x.focus();return}if(a==='product'){s.product=b.dataset.id;s.size='';s.qty=1;go('product');return}if(a==='wish'){e.preventDefault();e.stopPropagation();var ix=wish.indexOf(b.dataset.id);if(ix>=0)wish.splice(ix,1);else wish.push(b.dataset.id);save();render();toast(ix>=0?'Removed from saved pieces':'Saved for later');return}if(a==='size'){s.size=b.dataset.size;render();return}if(a==='qty'){s.qty=Math.max(1,s.qty+Number(b.dataset.d));render();return}if(a==='add'){add(b.dataset.id);return}if(a==='cartqty'){var c=cart.find(function(x){return x.id===b.dataset.id});if(c){c.qty+=Number(b.dataset.d);if(c.qty<=0)cart=cart.filter(function(x){return x!==c});else{var p=find(c.id);if(p)c.qty=Math.min(c.qty,p.stock)}save();render()}return}if(a==='remove'){cart=cart.filter(function(x){return x.id!==b.dataset.id});save();render();return}if(a==='clear'){s.query='';s.filterSize='';s.sort='featured';render();return}if(a==='auth'){s.auth=s.auth==='login'?'signup':'login';render();return}if(a==='logout'){user=null;localStorage.removeItem('uw_customer');render();toast('Signed out');return}if(a==='accounttab'){s.account=b.dataset.tab;render();return}if(a==='admin-link'){go('admin-login');return}if(a==='section'){s.section=b.dataset.s;s.editing=null;render();return}if(a==='adminlogout'){isAdmin=false;sessionStorage.removeItem('uw_admin');go('admin-login');return}if(a==='newproduct'){s.editing={};render();return}if(a==='editproduct'){s.editing=Object.assign({},find(b.dataset.id));render();return}if(a==='cancel-edit'){s.editing=null;render();return}if(a==='deleteproduct'){if(confirm('Delete this product from the demo catalog?')){products=products.filter(function(p){return p.id!==b.dataset.id});save();render()}return}if(a==='newdiscount'){s.editing={discount:true};render();var section=app.querySelector('.admin-main');if(section)section.innerHTML=head('New promo code','Create a code customers can apply at checkout.')+'<form class="admin-form" data-f="discount"><div class="form-grid"><div class="field"><label>Promo code</label><input name="code" required></div><div class="field"><label>Type</label><select name="type"><option value="percent">Percentage</option><option value="fixed">Fixed amount</option></select></div><div class="field"><label>Value</label><input name="value" type="number" min="1" required></div></div><button class="btn lime">Create code</button></form>';return}if(a==='togglecode'){discounts[Number(b.dataset.i)].active=!discounts[Number(b.dataset.i)].active;save();render();return}if(a==='deletecode'){discounts.splice(Number(b.dataset.i),1);save();render();return}if(a==='size-guide'){toast('Relaxed fit: choose your usual size.');return}});
+app.addEventListener('change',function(e){var t=e.target;if(t.matches('[data-filter]')){if(t.dataset.filter==='size')s.filterSize=t.value;else s.sort=t.value;render()}if(t.matches('[data-status]')){var o=orders.find(function(x){return x.id===t.dataset.status});if(o){o.status=t.value;save();toast('Order status updated')}}});
+app.addEventListener('input',function(e){var t=e.target;if(t.matches('[data-filter="query"]')){s.query=t.value;var pos=t.selectionStart;render();var n=app.querySelector('[data-filter="query"]');if(n){n.focus();n.setSelectionRange(pos,pos)}}});
+app.addEventListener('submit',function(e){var f=e.target;if(!f.matches('form[data-f]'))return;e.preventDefault();var type=f.dataset.f,d=new FormData(f);if(type==='search'){s.query=String(d.get('q')||'');s.cat='Shop all';go('category');return}if(type==='newsletter'){toast('Thanks for joining the list (demo)');f.reset();return}if(type==='promo'){var code=String(d.get('code')||'').trim().toUpperCase();if(discounts.some(function(x){return x.active&&x.code===code})){s.promo=code;s.promoError='';toast('Promo code applied')}else{s.promo='';s.promoError='That code is not active. Check and try again.'}render();return}if(type==='checkout'){place(f);return}if(type==='adminlogin'){var m=f.querySelector('.msg');if(d.get('username')===ADMIN_USER&&d.get('password')===ADMIN_PASS){isAdmin=true;sessionStorage.setItem('uw_admin','true');s.section='Overview';go('admin')}else m.innerHTML='<div class="error">Those details did not match. Try the demo credentials shown below.</div>';return}if(type==='login'||type==='signup'){var email=String(d.get('email')).trim().toLowerCase(),pass=String(d.get('password')),m=f.querySelector('.msg');hashpass(pass).then(function(h){if(type==='signup'){if(customers.some(function(c){return c.email===email})){m.innerHTML='<div class="error">An account already uses that email.</div>';return}var c={name:String(d.get('name')).trim(),email:email,hash:h,created:new Date().toISOString()};customers.push(c);user={name:c.name,email:c.email};localStorage.setItem('uw_customer',JSON.stringify(user));save();render()}else{var c=customers.find(function(x){return x.email===email&&x.hash===h});if(!c){m.innerHTML='<div class="error">We could not find an account with those details.</div>';return}user={name:c.name,email:c.email};localStorage.setItem('uw_customer',JSON.stringify(user));render()}});return}if(type==='saveproduct'){var id=d.get('id')||'item-'+Date.now(),old=find(id),p={id:id,name:d.get('name'),cat:d.get('cat'),price:Number(d.get('price')),compare:Number(d.get('compare'))||0,color:d.get('color')||'Everyday',sizes:String(d.get('sizes')||'S,M,L,XL').split(',').map(function(x){return x.trim()}).filter(Boolean),stock:Number(d.get('stock')),badge:d.get('badge')||'',image:d.get('image'),desc:d.get('desc')||'',featured:old?old.featured:0};if(old)products=products.map(function(x){return x.id===id?p:x});else products.push(p);save();s.editing=null;render();toast('Product saved');return}if(type==='settings'){settings={threshold:Number(d.get('threshold')),delivery:Number(d.get('delivery')),returns:d.get('returns')};save();render();toast('Settings saved');return}if(type==='discount'){var code=String(d.get('code')).trim().toUpperCase();if(discounts.some(function(x){return x.code===code})){toast('That code already exists');return}discounts.push({code:code,type:d.get('type'),value:Number(d.get('value')),active:true});save();s.editing=null;render();toast('Promo code created')}});
+window.addEventListener('hashchange',function(){var p=route();if(p!==s.page){s.page=p;render()}});
+render();
+})();
+</script>
+</body></html>
